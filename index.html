@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Game Profile</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="intro.css" />
+<link rel="stylesheet" href="intro.css" />
+  <style>
+    @media (max-width: 768px) {
+      .tab-header {
+        flex-direction: column;
+      }
+
+      .stat-box,
+      .skill-item,
+      .collection-item {
+        width: 100%;
+        flex: 1 1 100%;
+      }
+
+      .profile-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .avatar {
+        margin-bottom: 15px;
+      }
+
+      .progress-bar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="intro-screen">
+  <div class="intro-logo">[NIX]</div>
+  <div class="intro-bar">
+    <div class="intro-progress"></div>
+  </div>
+  <div class="intro-message" id="typing-text"></div>
+</div>
+  <div class="profile-card">
+    <!-- Always visible profile header -->
+    <div class="profile-info">
+      <img src="https://i.imgur.com/sxZq2Ww.png" class="avatar" alt="avatar" />
+      <div class="info">
+        <h2 class="name">Tien Tran</h2>
+        <p class="title">Game Developer</p>
+        <div class="level-bar">
+          <span>Level 19</span>
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-header">
+      <button class="tab-btn active" onclick="openTab('overview')">Overview</button>
+      <button class="tab-btn" onclick="openTab('products')">Products</button>
+      <button class="tab-btn" onclick="openTab('skills')">Skills</button>
+      <button class="tab-btn" onclick="openTab('contact')">Contact</button>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="overview" class="tab-content active">
+      <div class="stats">
+        <div class="stat-box">
+          <p class="stat-label">Trophies</p>
+          <p class="stat-value" data-target="3,127">0</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">EXP</p>
+          <p class="stat-value" data-target="3.8B">0</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">Win</p>
+          <p class="stat-value" data-target="320">0</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">MVP</p>
+          <p class="stat-value" data-target="8,000">0</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="products" class="tab-content">
+      <div class="collection-item">
+        <h3>PONK!</h3>
+        <video controls width="100%">
+          <source src="your_video_path_ponk.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>2D planetary action game. Prototype in progress.</p>
+      </div>
+      <div class="collection-item">
+        <h3>Drop Block 3D</h3>
+        <video controls width="100%">
+          <source src="your_video_path_dropblock.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>A puzzle game using physics with multiple themes and difficulty.</p>
+      </div>
+      <div class="collection-item">
+        <h3>Naruto Endless Runner</h3>
+        <video controls width="100%">
+          <source src="your_video_path_runner.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>Side-scrolling endless runner game built in Unity.</p>
+      </div>
+    </div>
+
+    <div id="skills" class="tab-content">
+      <div class="skill-list">
+        <div class="skill-item">
+          <div class="skill-name">Unity</div>
+          <div class="skill-desc">Experience in building 2D/3D games using Unity and C#</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Shader Graph</div>
+          <div class="skill-desc">Creating visual effects and optimized materials</div>
+          <div class="stars">⭐⭐⭐⭐</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Photon PUN</div>
+          <div class="skill-desc">Building multiplayer turn-based games with real-time sync</div>
+          <div class="stars">⭐⭐⭐⭐</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">UI Toolkit</div>
+          <div class="skill-desc">Custom editor tools and in-game UI systems</div>
+          <div class="stars">⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact" class="tab-content">
+      <div class="contact-section">
+        <h3>Let's Connect!</h3>
+        <p>I’m always open to discussing game development, collaboration, or job opportunities.</p>
+        <div class="contact-links">
+          <a href="mailto:your.email@example.com">Email Me</a>
+          <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+          <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+      // Intro screen fade out
+    window.addEventListener('load', () => {
+  const typingText = document.getElementById('typing-text');
+  const message = 'Welcome to my portfolio';
+  let charIndex = 0;
+  const typeInterval = setInterval(() => {
+    if (charIndex < message.length) {
+      typingText.textContent += message.charAt(charIndex);
+      charIndex++;
+    } else {
+      clearInterval(typeInterval);
+    }
+  }, 50);
+  const intro = document.getElementById('intro-screen');
+  const progress = document.querySelector('.intro-progress');
+  let width = 0;
+  const interval = setInterval(() => {
+    width += 1;
+    progress.style.width = width + '%';
+    if (width >= 100) {
+      clearInterval(interval);
+      intro.style.opacity = '0';
+      setTimeout(() => intro.remove(), 1000);
+    }
+  }, 20); // 100% in 2s
+});
+      
+  </script>
+</body>
+</html>
