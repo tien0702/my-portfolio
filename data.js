@@ -28,7 +28,14 @@ const skills = [
   
   const companyProjects = [
     {
-      title: "Corporate Game Project",
+      title: "Jelly Master: Mukbang Asmr | 50M+",
+      description: "Game developed as part of a team at XYZ Studio.",
+      role: "Gameplay Programmer – responsible for combat logic and UI integration.",
+      youtubeId: "VIDEO_ID_2",
+      downloadLink: "#"
+    },
+    {
+      title: "Left Right 2 | 10M+",
       description: "Game developed as part of a team at XYZ Studio.",
       role: "Gameplay Programmer – responsible for combat logic and UI integration.",
       youtubeId: "VIDEO_ID_2",
